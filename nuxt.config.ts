@@ -7,6 +7,10 @@ export default defineNuxtConfig({
       pathPrefix: false
     }
   ],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    '@formkit/nuxt'
+  ],
   runtimeConfig: {
     public: {
       // public runtime config

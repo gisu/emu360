@@ -1,14 +1,14 @@
-const inputRequired = name => {
+const inputRequired = (name) => {
   return value => (/.+/.test(value) ? true : `${name} is required`)
 }
 
 module.exports = function (plop) {
-  const COMPONENT_PATH = 'src/components/'
-  const LAYOUT_PATH = 'src/layouts/'
-  const PAGE_PATH = 'src/pages/'
-  const COMPOSABLE_PATH = 'src/composable/'
-  const STORE_PATH = 'src/store/'
-  const TYPES_PATH = 'src/types/'
+  const COMPONENT_PATH = './components/'
+  const LAYOUT_PATH = './layouts/'
+  const PAGE_PATH = './pages/'
+  const COMPOSABLE_PATH = './composable/'
+  const STORE_PATH = './store/'
+  const TYPES_PATH = './types/'
 
   plop.setWelcomeMessage(
     'Welcome to the Vue 3 Plop generator! Please select a generator.'
