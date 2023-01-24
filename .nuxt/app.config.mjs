@@ -1,5 +1,5 @@
 
-import { defuFn } from '/Users/saschafuchs/develop/hackathon/emuFe360/node_modules/defu/dist/defu.mjs'
+import { defuFn } from '/Users/saschafuchs/develop/hackathon/emu360/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {}
 
