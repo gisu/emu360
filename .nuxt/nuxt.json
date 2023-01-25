@@ -1,9 +1,9 @@
 {
-  "_hash": "u9T6wcbhJF",
+  "_hash": "S9CUulDWIp",
   "project": {
     "rootDir": "/Users/saschafuchs/develop/hackathon/emu360"
   },
   "versions": {
-    "nuxt": "3.0.0"
+    "nuxt": "3.1.0"
   }
 }

@@ -1,13 +1,12 @@
 <script lang="ts" setup>
-const props = defineProps({})
 </script>
 
 <template>
-  <div class="page__{{camelCase name}}">
+  <div class="page{{pascalCase name}}">
     {{name}}
   </div>
 </template>
 
 <style>
-  .page__{{camelCase name}} {}
+  .page{{pascalCase name}} {}
 </style>

@@ -1,6 +1,13 @@
 .DS_Store
 node_modules
 dist-ssr
+.nuxt
+*.log*
+.nuxt
+.nitro
+.cache
+.output
+.env
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/

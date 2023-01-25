@@ -2,10 +2,14 @@
 declare module 'nitropack' {
   type Awaited<T> = T extends PromiseLike<infer U> ? Awaited<U> : T
   interface InternalApi {
-    '/__nuxt_error': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
+    '/__nuxt_error': {
+      'default': Awaited<ReturnType<typeof import('../../node_modules/nuxt/dist/core/runtime/nitro/renderer').default>>
+    }
   }
 }
 declare global {
+  const __buildAssetsURL: typeof import('/Users/saschafuchs/develop/hackathon/emu360/node_modules/nuxt/dist/core/runtime/nitro/paths')['buildAssetsURL']
+  const __publicAssetsURL: typeof import('/Users/saschafuchs/develop/hackathon/emu360/node_modules/nuxt/dist/core/runtime/nitro/paths')['publicAssetsURL']
   const appendHeader: typeof import('h3')['appendHeader']
   const appendHeaders: typeof import('h3')['appendHeaders']
   const appendResponseHeader: typeof import('h3')['appendResponseHeader']

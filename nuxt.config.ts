@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   ],
   modules: [
     '@nuxtjs/tailwindcss',
+    'nuxt-icon',
     '@formkit/nuxt'
   ],
   runtimeConfig: {

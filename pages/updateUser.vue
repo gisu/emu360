@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { IUser } from '~/types/general.interfaces'
+import { UserSchema, type IUser } from '~/types/schemas/user.schema'
 import timezones from '~/data/timezones.json'
 
-const { data: userData, pending, error, refresh } = await useFetch<IUser>('http://koalityauth.test:8000/profile/')
+const { data: userData } = await useFetch<IUser>('http://koalityauth.test:8000/profile/sascha-12e2-4a71-add6-69d9753907e8')
 
 const formData = reactive<IUser>({
   firstName: '',
@@ -11,17 +11,41 @@ const formData = reactive<IUser>({
   language: ''
 })
 
+watch(() => userData.value, () => {
+  if (!userData.value) return
+  formData.firstName = userData.value.firstName
+  formData.lastName = userData.value.lastName
+  formData.timeZone = userData.value.timeZone
+  formData.language = userData.value.language
+}, { immediate: true })
+
 const router = useRouter()
 
+const errorMessage = ref<string|null>(null)
+
+const checkFormBeforeSend = () => {
+  return UserSchema.safeParse(formData).success
+}
+
 const updateUser = async () => {
+  errorMessage.value = null
+  if (!checkFormBeforeSend()) {
+    errorMessage.value = 'Please fill out all fields.'
+    return
+  }
   try {
-    await useFetch<IUser>('http://koalityauth.test:8000/profile/', {
+    await fetch('http://koalityauth.test:8000/profile/sascha-12e2-4a71-add6-69d9753907e8', {
+      mode: 'no-cors',
       method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(formData)
     })
     router.push('/')
   } catch (error) {
-    console.log('error', error)
+    errorMessage.value = 'Something went wrong.'
   }
 }
 </script>
@@ -30,6 +54,12 @@ const updateUser = async () => {
   <div class="page__updateUser">
     <p class="font-medium mb-4 text-gray-500">
       Update some specific user meta data:
+    </p>
+    <p
+      v-if="errorMessage"
+      class="text-rose-700 mb-2"
+    >
+      {{ errorMessage }}
     </p>
     <FormKit type="form" @submit="updateUser">
       <div class="md:grid grid-cols-2 gap-8">
